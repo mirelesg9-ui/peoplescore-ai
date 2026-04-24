@@ -955,6 +955,4 @@ function getPriorityActions(answers, domainScores) {
   return actions.slice(0, 5);
 }
 
-function getDomainLabel(key) {
-  return { compliance: "Compliance & Risk", payroll: "Payroll & Classification", hiring: "Hiring & Onboarding", policies: "Policies & Handbook", performance: "Performance Management", compensation: "Compensation & Benefits", culture: "Culture & Retention", analytics: "HR Data & Analytics" }[key] || key;
-}
+
