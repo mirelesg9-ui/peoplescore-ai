@@ -520,23 +520,29 @@ export default function PeopleScoreAI() {
   const topRef = useRef(null);
 
   const visible = QUESTIONS.filter(q => !q.showIf || q.showIf(answers));
-  const current = visible[Math.min(qIndex, visible.length-1)];
-  const progress = Math.round((qIndex / Math.max(visible.length-3, 1)) * 100);
+  const safeIndex = Math.min(qIndex, visible.length - 1);
+  const current = visible[safeIndex];
+  const totalQ = visible.filter(q => q.type === "choice").length;
+  const doneQ = visible.filter((q,i) => i < safeIndex && q.type === "choice").length;
+  const progress = Math.round((doneQ / Math.max(totalQ, 1)) * 100);
 
   const answeredCount = Object.keys(answers).length;
   const { score, domainScores, hasCriticalGap } = computeScore(answers);
   const scoreToShow = answeredCount < 2 ? 30 : score;
   const band = getScoreBand(scoreToShow);
   const confidence = Math.max(3, Math.round(20 - answeredCount*0.7));
-  const peerBenchmark = getPeerBenchmark(answers.size||"11–25", answers.industry||"Other");
+  const peerBenchmark = getPeerBenchmark(answers.size||'11–25', answers.industry||'Other');
 
   const advance = (choice) => {
     if (animating) return;
-    const newAnswers = (current.key && choice !== null) ? { ...answers, [current.key]: choice } : { ...answers };
+    const newAnswers = (current?.key && choice !== null)
+      ? { ...answers, [current.key]: choice }
+      : { ...answers };
     setAnswers(newAnswers);
     setAnimating(true);
     setTimeout(() => {
-      setQIndex(i => Math.min(i+1, visible.length-1));
+      const nv = QUESTIONS.filter(q => !q.showIf || q.showIf(newAnswers));
+      setQIndex(Math.min(safeIndex + 1, nv.length - 1));
       setSelected(null);
       setAnimating(false);
       topRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -544,7 +550,6 @@ export default function PeopleScoreAI() {
   };
 
   const goBack = () => { if(qIndex>0){setQIndex(i=>i-1);setSelected(null);} };
-
   const generateReport = async () => {
     if (!captureData.email) return;
     setReportLoading(true);
