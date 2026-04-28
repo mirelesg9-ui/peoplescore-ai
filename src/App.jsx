@@ -520,7 +520,7 @@ export default function PeopleScoreAI() {
   const topRef = useRef(null);
 
   const visible = QUESTIONS.filter(q => !q.showIf || q.showIf(answers));
-  const current = visible[qIndex];
+  const current = visible[Math.min(qIndex, visible.length-1)];
   const progress = Math.round((qIndex / Math.max(visible.length-3, 1)) * 100);
 
   const answeredCount = Object.keys(answers).length;
@@ -532,7 +532,7 @@ export default function PeopleScoreAI() {
 
   const advance = (choice) => {
     if (animating) return;
-    const newAnswers = current.key ? { ...answers, [current.key]: choice } : { ...answers };
+    const newAnswers = (current.key && choice !== null) ? { ...answers, [current.key]: choice } : { ...answers };
     setAnswers(newAnswers);
     setAnimating(true);
     setTimeout(() => {
@@ -654,7 +654,7 @@ Start immediately with the Executive Summary — no preamble or "Here is your re
                   ["Personalized score (0–100)","Calibrated to your industry & size"],
                   ["Domain breakdown","8 HR areas assessed in depth"],
                   ["Peer benchmarking","vs. companies like yours"],
-                  ["AI-generated report","Specific action steps from Claude"],
+                  ["Prioritized action plan","What to fix first and why"],
                 ].map(([title,sub])=>(
                   <div key={title} style={{padding:"16px 18px",border:`1px solid ${C.border}`,borderRadius:12,background:C.bgSub}}>
                     <div style={{fontSize:13,fontWeight:600,color:C.navy,marginBottom:3}}>✓ {title}</div>
