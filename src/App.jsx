@@ -534,19 +534,17 @@ export default function PeopleScoreAI() {
   const peerBenchmark = getPeerBenchmark(answers.size||'11–25', answers.industry||'Other');
 
   const advance = (choice) => {
-    if (animating) return;
     const newAnswers = (current?.key && choice !== null)
       ? { ...answers, [current.key]: choice }
       : { ...answers };
+    const nv = QUESTIONS.filter(q => !q.showIf || q.showIf(newAnswers));
+    const nextIndex = Math.min(safeIndex + 1, nv.length - 1);
     setAnswers(newAnswers);
-    setAnimating(true);
+    setSelected(null);
+    setQIndex(nextIndex);
     setTimeout(() => {
-      const nv = QUESTIONS.filter(q => !q.showIf || q.showIf(newAnswers));
-      setQIndex(Math.min(safeIndex + 1, nv.length - 1));
-      setSelected(null);
-      setAnimating(false);
       topRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, 250);
+    }, 50);
   };
 
   const goBack = () => { if(qIndex>0){setQIndex(i=>i-1);setSelected(null);} };
@@ -635,7 +633,7 @@ Start immediately with the Executive Summary — no preamble or "Here is your re
 
       {/* MAIN */}
       <div style={{maxWidth:680,margin:"0 auto",padding:"48px 24px 80px"}}>
-        <div style={{opacity:animating?0:1,transform:animating?"translateY(8px)":"translateY(0)",transition:"opacity 0.25s ease, transform 0.25s ease"}}>
+        <div style={{transition:"opacity 0.2s ease"}}>
 
           {/* INTRO */}
           {current?.type === "intro" && (
