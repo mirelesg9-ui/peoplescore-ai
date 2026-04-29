@@ -36,7 +36,7 @@ function buildMasterPrompt(ctx) {
   const sizeLabel = ctx.auditMode==="organization" ? ctx.size :
                     ctx.auditMode==="population"   ? ctx.populationSize :
                     ctx.size;
-  return `You are PeopleScoreAI — an AI-powered HR diagnostic specialist. You conduct structured discovery interviews grounded in enterprise HR methodology. You adapt your questions based on what you learn, ask follow-ups when answers reveal risk, and never go off-framework.
+  return `You are PeopleScoreAI an AI-powered HR diagnostic specialist. You conduct structured discovery interviews grounded in enterprise HR methodology. You adapt your questions based on what you learn, ask follow-ups when answers reveal risk, and never go off-framework.
 
 ## ABOUT THE PERSON & COMPANY
 - Name: ${ctx.name}
@@ -52,7 +52,7 @@ ${ctx.auditMode==="organization" ? `- Audit type: Full organization assessment
 - Function: ${ctx.functionName}
 - Their title: ${ctx.hrTitle}`}
 
-## CRITICAL RULE — NEVER ASK FOR INFORMATION ALREADY PROVIDED
+## CRITICAL RULE NEVER ASK FOR INFORMATION ALREADY PROVIDED
 You already know their name (${ctx.name}), company (${ctx.companyName}), industry (${ctx.industry}), and size (${sizeLabel}). Never ask for any of these again. Reference them naturally in your questions to show you're listening.
 
 ## YOUR METHODOLOGY
@@ -73,40 +73,40 @@ sizeLabel==="26–50"||sizeLabel==="51–200"||sizeLabel==="50–200" ?
 
 ## THE 12 HR FUNCTIONS YOU ASSESS
 
-**1. Administrative Responsibilities** — HRIS, recordkeeping, I-9s, data security, compliance documentation. Red flags: paper files, no HRIS, I-9 errors. Enterprise: multi-state data privacy (CPRA, CO, VA), biometric compliance.
+**1. Administrative Responsibilities** HRIS, recordkeeping, I-9s, data security, compliance documentation. Red flags: paper files, no HRIS, I-9 errors. Enterprise: multi-state data privacy (CPRA, CO, VA), biometric compliance.
 
-**2. Human Resource Planning** — Headcount planning, skills gap analysis, succession pipeline, workforce forecasting. Only 11% of orgs have strategic maturity here (Deloitte). Red flags: purely reactive hiring, no succession plan.
+**2. Human Resource Planning** Headcount planning, skills gap analysis, succession pipeline, workforce forecasting. Only 11% of orgs have strategic maturity here (Deloitte). Red flags: purely reactive hiring, no succession plan.
 
-**3. Recruitment & Selection** — Sourcing, employer brand, structured interviews, ATS, FCRA compliance. Benchmarks: SHRM median time-to-fill 41 days; referrals convert 11x better than job boards; sourced candidates 5-8x more likely to be hired. Red flags: verbal-only offers, no background check process.
+**3. Recruitment & Selection** Sourcing, employer brand, structured interviews, ATS, FCRA compliance. Benchmarks: SHRM median time-to-fill 41 days; referrals convert 11x better than job boards; sourced candidates 5-8x more likely to be hired. Red flags: verbal-only offers, no background check process.
 
-**4. Performance Management** — Goal-setting, review cadence, manager coaching, documentation, PIPs. 70% of engagement variance comes from direct manager (Gallup). 93% of orgs say PM drives performance but only 44% say their PM achieves it (SHRM). Red flags: verbal-only feedback, no documentation before termination.
+**4. Performance Management** Goal-setting, review cadence, manager coaching, documentation, PIPs. 70% of engagement variance comes from direct manager (Gallup). 93% of orgs say PM drives performance but only 44% say their PM achieves it (SHRM). Red flags: verbal-only feedback, no documentation before termination.
 
-**5. Learning & Development** — Onboarding, compliance training, skills gaps, LMS, manager training, leadership development. 53% of employees would consider leaving due to lack of L&D (Lorman). Bersin: companies that invest in L&D have 24% higher profit margins. Red flags: no formal onboarding, no L&D budget.
+**5. Learning & Development** Onboarding, compliance training, skills gaps, LMS, manager training, leadership development. 53% of employees would consider leaving due to lack of L&D (Lorman). Bersin: companies that invest in L&D have 24% higher profit margins. Red flags: no formal onboarding, no L&D budget.
 
-**6. Career Planning** — Career pathing, internal mobility, succession planning, IDPs, promotion transparency. Red flags: no defined career paths, promotions appear arbitrary, no succession plan for key roles.
+**6. Career Planning** Career pathing, internal mobility, succession planning, IDPs, promotion transparency. Red flags: no defined career paths, promotions appear arbitrary, no succession plan for key roles.
 
-**7. Function Evaluation (Job Architecture)** — Job analysis, FLSA classification, pay grades, job leveling. Misclassification is DOL's #1 enforcement target. Red flags: outdated job descriptions, no pay structure, exempt roles that should be non-exempt.
+**7. Function Evaluation (Job Architecture)** Job analysis, FLSA classification, pay grades, job leveling. Misclassification is DOL's #1 enforcement target. Red flags: outdated job descriptions, no pay structure, exempt roles that should be non-exempt.
 
-**8. Rewards (Total Rewards)** — Compensation philosophy, pay bands, market benchmarking, benefits admin, pay equity, pay transparency compliance. 17+ states require salary ranges in job postings. ACA affordability threshold 9.96% (2026). Red flags: gut-feel pay, no market data, pay equity never reviewed.
+**8. Rewards (Total Rewards)** Compensation philosophy, pay bands, market benchmarking, benefits admin, pay equity, pay transparency compliance. 17+ states require salary ranges in job postings. ACA affordability threshold 9.96% (2026). Red flags: gut-feel pay, no market data, pay equity never reviewed.
 
-**9. Industrial Relations (Employee & Labor Relations)** — ER case management, investigation process, termination procedures, WARN Act, NLRA rights, employment agreements. Red flags: verbal-only terminations, no investigation process, managers handling ER without HR support.
+**9. Industrial Relations (Employee & Labor Relations)** ER case management, investigation process, termination procedures, WARN Act, NLRA rights, employment agreements. Red flags: verbal-only terminations, no investigation process, managers handling ER without HR support.
 
-**10. Employee Participation & Communication** — Engagement measurement, internal comms, manager enablement, change management. Gallup: 23% higher profitability for highly engaged teams; only 32% of US employees currently engaged. Red flags: no engagement surveys, employees learn about changes through rumor.
+**10. Employee Participation & Communication** Engagement measurement, internal comms, manager enablement, change management. Gallup: 23% higher profitability for highly engaged teams; only 32% of US employees currently engaged. Red flags: no engagement surveys, employees learn about changes through rumor.
 
-**11. Health & Safety** — OSHA compliance, incident reporting (OSHA 300 logs), safety training, EAP, return-to-work. OSHA penalties 2024: $16,131 per serious violation, $161,323 per willful/repeated. Red flags: no safety training, missing OSHA 300 logs, no written safety program.
+**11. Health & Safety** OSHA compliance, incident reporting (OSHA 300 logs), safety training, EAP, return-to-work. OSHA penalties 2024: $16,131 per serious violation, $161,323 per willful/repeated. Red flags: no safety training, missing OSHA 300 logs, no written safety program.
 
-**12. Well-being** — Mental health support (EAP), financial wellness, burnout management, psychological safety, FMLA/ADA accommodation. 83% of employees would consider leaving if company ignores wellbeing. WHO: $1T annually lost to depression/anxiety. Red flags: no EAP, no accommodation process, no wellbeing measurement.
+**12. Well-being** Mental health support (EAP), financial wellness, burnout management, psychological safety, FMLA/ADA accommodation. 83% of employees would consider leaving if company ignores wellbeing. WHO: $1T annually lost to depression/anxiety. Red flags: no EAP, no accommodation process, no wellbeing measurement.
 
 ## CONVERSATION RULES
 
 1. **One question per turn. Always.**
-2. **Ask follow-up questions when answers reveal risk.** If they mention EEOC complaints, lawsuits, high turnover, manual processes — probe deeper before moving on.
+2. **Ask follow-up questions when answers reveal risk.** If they mention EEOC complaints, lawsuits, high turnover, manual processes probe deeper before moving on.
 3. **Reference what you know.** Use their name, company name, and industry naturally.
 4. **Format EVERY response as JSON:**
 \`\`\`json
 {
   "question": "The question text",
-  "context": "Why this matters — 1-2 sentences in plain business language",
+  "context": "Why this matters 1-2 sentences in plain business language",
   "options": ["Option A", "Option B", "Option C", "Option D"],
   "allowFreeText": true,
   "domain": "compliance",
@@ -118,7 +118,7 @@ sizeLabel==="26–50"||sizeLabel==="51–200"||sizeLabel==="50–200" ?
 5. **estimatedScore** = your running estimate of their overall PeopleScore (0-100). Update every turn.
 6. **questionsRemaining** = your honest estimate of how many more questions you need before you have enough for a full report. Start at ~12, count down as you learn more.
 7. **Conduct 10-16 questions total.** Weight toward what matters most for their industry/size/mode.
-8. **${ctx.auditMode==="function" ? `For function assessments: focus 70% of questions on the ${ctx.functionName} function specifically. Ask about strategic maturity, team capabilities, data/analytics usage, stakeholder relationships, and outcomes — not just basic compliance.` : "Cover compliance-critical areas first, then strategic HR domains."}**
+8. **${ctx.auditMode==="function" ? `For function assessments: focus 70% of questions on the ${ctx.functionName} function specifically. Ask about strategic maturity, team capabilities, data/analytics usage, stakeholder relationships, and outcomes not just basic compliance.` : "Cover compliance-critical areas first, then strategic HR domains."}**
 9. **When you have enough information, output:**
 \`\`\`json
 { "auditComplete": true, "finalScore": 67 }
@@ -137,7 +137,7 @@ function buildWebReportPrompt(ctx, conv, score) {
   const band = getBand(score);
   const pb = getPeer(ctx.size||"11–25", ctx.industry||"Other");
   const answers = conv.filter(m=>m.role==="user").map(m=>m.content).join("\n");
-  return `You are PeopleScoreAI. Generate a SHORT, punchy web summary report. This is NOT the full report — the full detailed version goes in their email. This is the quick-action dashboard view.
+  return `You are PeopleScoreAI. Generate a SHORT, punchy web summary report. This is NOT the full report the full detailed version goes in their email. This is the quick-action dashboard view.
 
 CONTEXT: ${ctx.name} at ${ctx.companyName} | ${ctx.industry} | ${ctx.size||ctx.populationSize} employees
 ${ctx.auditMode==="function" ? `Function assessed: ${ctx.functionName}` : ""}
@@ -148,11 +148,11 @@ ${answers}
 
 FORMAT (use ## for headers, keep each section SHORT):
 
-## Your Score: ${score}/100 — ${band.label}
+## Your Score: ${score}/100 ${band.label}
 1-2 sentences only. What this score means for ${ctx.companyName} specifically.
 
 ## Why You Scored Here
-3-4 bullet points max. The most important factors — positive and negative. Be specific to what they said.
+3-4 bullet points max. The most important factors positive and negative. Be specific to what they said.
 
 ## Your Top 3 Priorities
 Numbered list. Each priority = one specific action. No more than 2 sentences each. Most urgent first.
@@ -163,9 +163,9 @@ Single most impactful action they can take in the next 7 days. Make it specific 
 RULES:
 - Maximum 300 words total
 - Every sentence must reference something they actually said
-- Business language only — no HR jargon
+- Business language only no HR jargon
 - Direct: "you need to" not "it is recommended"
-- Do NOT summarize the audit back to them — they lived it`;
+- Do NOT summarize the audit back to them they lived it`;
 }
 
 function buildEmailReportPrompt(ctx, conv, score) {
@@ -187,14 +187,14 @@ FORMAT (use ## for section headers):
 ## Executive Summary
 3-4 sentences. Overall HR situation, what the score means for ${ctx.companyName} specifically, and the single most important finding. Name ${ctx.name} directly.
 
-## Your PeopleScore: ${score}/100 — ${band.label}
+## Your PeopleScore: ${score}/100 ${band.label}
 Score in context. Compare to peer median of ${pb}. What does being ${band.label} mean for a ${ctx.industry} ${ctx.auditMode==="function"?`${ctx.functionName} function`:"organization"} their size? What does reaching the next level look like?
 
-${score<=70 ? `## ⚠️ Critical Gaps — Address Immediately\nThese issues create active legal or financial exposure and cap your score. No other HR improvement matters until these are resolved.` : ""}
+${score<=70 ? `## ⚠️ Critical Gaps Address Immediately\nThese issues create active legal or financial exposure and cap your score. No other HR improvement matters until these are resolved.` : ""}
 
 ## Domain Analysis
 For each relevant area where you have information:
-**[Area Name] — [Score]/100**
+**[Area Name] [Score]/100**
 What the gap or strength means in plain language. What it could cost them or what it's worth to them. One specific action.
 
 ## Your 30-Day Action Plan
@@ -204,7 +204,7 @@ What the gap or strength means in plain language. What it could cost them or wha
 What comes after the immediate fixes. Strategic initiatives to move from ${band.label} toward the next level.
 
 ## Financial Impact
-Conservative estimate of what current gaps could cost — use real data: EEOC settlements, OSHA fines, turnover cost formulas, wrongful termination defense costs. And the upside: what better HR could save or generate.
+Conservative estimate of what current gaps could cost use real data: EEOC settlements, OSHA fines, turnover cost formulas, wrongful termination defense costs. And the upside: what better HR could save or generate.
 
 ## How PeopleScoreAI Can Help
 3-4 sentences. Specific to their situation, industry, and the gaps found. What would ongoing support look like for ${ctx.companyName}?
@@ -212,7 +212,7 @@ Conservative estimate of what current gaps could cost — use real data: EEOC se
 RULES:
 - Every finding must cite something they actually said
 - Every gap must have a dollar figure or specific legal exposure
-- Write directly to ${ctx.name} — use "you" throughout
+- Write directly to ${ctx.name} use "you" throughout
 - Business language only
 - Be direct and specific`;
 }
@@ -369,7 +369,7 @@ export default function App() {
 ${ctx.auditMode==="organization" ? `This is a full organization assessment for a ${ctx.industry} company with ${ctx.size} employees in the ${ctx.stage} stage.${ctx.populations?` They have multiple workforce populations: ${ctx.populations}.`:""}` :
   ctx.auditMode==="population" ? `This is a specific population assessment for the ${ctx.populationName} workforce (${ctx.populationSize} people) in the ${ctx.industry} industry.` :
   `This is an HR function self-assessment. ${ctx.name} is the ${ctx.hrTitle} and wants to assess the maturity of their ${ctx.functionName} function at ${ctx.companyName} (${ctx.size} employees, ${ctx.industry}).`}
-Start with your first diagnostic question. Remember: do NOT ask for their name, company, industry, or company size — you already have that information.`;
+Start with your first diagnostic question. Remember: do NOT ask for their name, company, industry, or company size you already have that information.`;
     try {
       let full="";
       await callClaude(sys, [{role:"user",content:firstMsg}],
@@ -463,10 +463,10 @@ Start with your first diagnostic question. Remember: do NOT ask for their name, 
           Work takes up a third of our lives.<br/><span style={{color:C.blue}}>It should be worth it.</span>
         </h1>
         <div style={{fontSize:17,color:C.textSub,lineHeight:1.8,marginBottom:32}}>
-          <p style={{marginBottom:16}}>In <em>Work Rules</em>, former Google SVP of People Operations Laszlo Bock shares a striking reality: we spend roughly a third of our lives at work — and for most people, that time is not good. Work is stressful, unfulfilling, and mismanaged. That doesn't have to be true.</p>
-          <p style={{marginBottom:16}}>HR — done well — is the function that changes that. It's what makes work meaningful, fair, and worth showing up for. Great HR attracts the right people, develops them, pays them equitably, protects them legally, and builds the kind of workplace where people actually want to be.</p>
-          <p style={{marginBottom:16}}>The problem is that great HR has always been a privilege. Fortune 500 companies spend millions on dedicated HR teams, enterprise software, and specialist consultants. A 20-person restaurant, a 50-person healthcare clinic, or a 100-person construction company has the same employees, the same legal obligations, and the same human need for good people management — but none of the infrastructure to deliver it.</p>
-          <p style={{marginBottom:0}}>PeopleScoreAI exists to close that gap. We're building the HR operating system that gives every business — regardless of size, industry, or budget — access to the quality of HR insight and support previously reserved for organizations that could afford it.</p>
+          <p style={{marginBottom:16}}>We spend roughly a third of our lives at work. For most people, that time is not good. Work is stressful, unfulfilling, and mismanaged. It does not have to be that way.</p>
+          <p style={{marginBottom:16}}>HR done well is the function that changes that. It's what makes work meaningful, fair, and worth showing up for. Great HR attracts the right people, develops them, pays them equitably, protects them legally, and builds the kind of workplace where people actually want to be.</p>
+          <p style={{marginBottom:16}}>The problem is that great HR has always been a privilege. Fortune 500 companies spend millions on dedicated HR teams, enterprise software, and specialist consultants. A 20-person restaurant, a 50-person healthcare clinic, or a 100-person construction company has the same employees, the same legal obligations, and the same human need for good people management but none of the infrastructure to deliver it.</p>
+          <p style={{marginBottom:0}}>PeopleScoreAI exists to close that gap. We're building the HR operating system that gives every business regardless of size, industry, or budget access to the quality of HR insight and support previously reserved for organizations that could afford it.</p>
         </div>
         <div style={{padding:"28px 32px",background:C.bgSub,border:`1px solid ${C.border}`,borderRadius:16,marginBottom:40}}>
           <div style={{fontSize:15,fontWeight:700,color:C.navy,marginBottom:8}}>The belief that drives everything we build:</div>
@@ -474,10 +474,10 @@ Start with your first diagnostic question. Remember: do NOT ask for their name, 
         </div>
         <h2 style={{fontSize:26,fontWeight:700,color:C.navy,letterSpacing:"-0.5px",marginBottom:20}}>What We're Building</h2>
         {[
-          ["The Diagnostic", "A free, AI-powered HR audit that gives any business a personalized score — calibrated to their industry, size, and stage. Not a generic checklist. A real diagnostic.", "✓ Live today at peoplescoreai.com"],
+          ["The Diagnostic", "A free, AI-powered HR audit that gives any business a personalized score calibrated to their industry, size, and stage. Not a generic checklist. A real diagnostic.", "✓ Live today at peoplescoreai.com"],
           ["The Roadmap", "After the audit, an AI-generated action plan: what to fix, in what order, and why. Specific to your actual situation.", "→ Coming next"],
           ["The Partner", "An always-on HR advisor for employees, managers, and executives. Ask questions, get documents drafted, handle compliance in real time.", "→ Phase 3"],
-          ["The Intelligence Layer", "Connect your existing HRIS — Workday, BambooHR, Rippling, ADP — and let PeopleScoreAI read your actual people data and tell you what it means.", "→ Phase 4"],
+          ["The Intelligence Layer", "Connect your existing HRIS Workday, BambooHR, Rippling, ADP and let PeopleScoreAI read your actual people data and tell you what it means.", "→ Phase 4"],
         ].map(([title,desc,status])=>(
           <div key={title} style={{display:"flex",gap:20,marginBottom:20,padding:"20px",border:`1px solid ${C.border}`,borderRadius:12,background:C.bg}}>
             <div style={{flex:1}}>
@@ -503,7 +503,7 @@ Start with your first diagnostic question. Remember: do NOT ask for their name, 
       <div style={{maxWidth:560,margin:"0 auto",padding:"80px 24px",textAlign:"center"}}>
         <div style={{fontSize:48,marginBottom:20}}>👋</div>
         <h1 style={{fontSize:36,fontWeight:800,letterSpacing:"-1px",color:C.navy,marginBottom:16}}>Get in Touch</h1>
-        <p style={{fontSize:16,color:C.textSub,lineHeight:1.7,marginBottom:40,maxWidth:400,margin:"0 auto 40px"}}>Whether you have questions about your PeopleScore, want to explore a partnership, or just want to talk HR — we'd love to hear from you.</p>
+        <p style={{fontSize:16,color:C.textSub,lineHeight:1.7,marginBottom:40,maxWidth:400,margin:"0 auto 40px"}}>Whether you have questions about your PeopleScore, want to explore a partnership, or just want to talk HR we'd love to hear from you.</p>
         <a href="mailto:hello@peoplescoreai.com"
           style={{display:"inline-flex",alignItems:"center",gap:10,padding:"16px 32px",background:C.navy,borderRadius:12,color:C.textInverse,fontSize:16,fontWeight:700,textDecoration:"none",marginBottom:16}}>
           ✉ hello@peoplescoreai.com
@@ -533,7 +533,7 @@ Start with your first diagnostic question. Remember: do NOT ask for their name, 
           Know exactly where<br/><span style={{color:C.blue}}>your HR stands.</span>
         </h1>
         <p style={{fontSize:18,color:C.textSub,lineHeight:1.7,marginBottom:8,maxWidth:500}}>
-          A dynamic, AI-led HR audit that adapts to your specific business — industry, size, workforce structure, and stage.
+          A dynamic, AI-led HR audit that adapts to your specific business industry, size, workforce structure, and stage.
         </p>
         <p style={{fontSize:13,color:C.textDim,marginBottom:44}}>Takes 10–15 minutes · No signup required · Free</p>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:40}}>
@@ -606,7 +606,7 @@ Start with your first diagnostic question. Remember: do NOT ask for their name, 
         {/* Current question */}
         {curQ&&!loading&&(
           <div style={{padding:"20px 22px",background:C.bgSub,border:`1px solid ${C.border}`,borderRadius:14,borderTopLeftRadius:4,marginBottom:16}}>
-            {curQ.tier==="critical"&&<div style={{fontSize:10,fontWeight:700,color:C.rose,textTransform:"uppercase",letterSpacing:"1px",marginBottom:8,padding:"2px 8px",background:C.roseLight,border:`1px solid ${C.rose}30`,borderRadius:4,display:"inline-block"}}>⚠ Critical — weighted heavily in your score</div>}
+            {curQ.tier==="critical"&&<div style={{fontSize:10,fontWeight:700,color:C.rose,textTransform:"uppercase",letterSpacing:"1px",marginBottom:8,padding:"2px 8px",background:C.roseLight,border:`1px solid ${C.rose}30`,borderRadius:4,display:"inline-block"}}>⚠ Critical weighted heavily in your score</div>}
             <div style={{fontSize:11,fontWeight:600,color:C.blue,textTransform:"uppercase",letterSpacing:"1px",marginBottom:6}}>{curQ.domain}</div>
             <div style={{fontSize:16,fontWeight:600,color:C.navy,lineHeight:1.4,marginBottom:curQ.context?8:16}}>{curQ.question}</div>
             {curQ.context&&<div style={{fontSize:13,color:C.textSub,lineHeight:1.6,marginBottom:16}}>{curQ.context}</div>}
@@ -625,7 +625,7 @@ Start with your first diagnostic question. Remember: do NOT ask for their name, 
             {/* Free text callout */}
             <div style={{padding:"10px 14px",background:"#FFF9E6",border:`1px solid ${C.amber}40`,borderRadius:8,marginBottom:10}}>
               <span style={{fontSize:12,color:C.amber,fontWeight:700}}>💬 You can type anything</span>
-              <span style={{fontSize:12,color:C.textSub}}> — select an option above or type your own answer below. This is a real conversation.</span>
+              <span style={{fontSize:12,color:C.textSub}}> select an option above or type your own answer below. This is a real conversation.</span>
             </div>
           </div>
         )}
@@ -681,7 +681,7 @@ Start with your first diagnostic question. Remember: do NOT ask for their name, 
         </div>
         <h2 style={{fontSize:22,fontWeight:700,color:C.navy,letterSpacing:"-0.5px",marginBottom:6}}>Your full report is ready</h2>
         <p style={{fontSize:14,color:C.textSub,lineHeight:1.6,marginBottom:20}}>
-          Enter your email to receive your <strong>full detailed HR report</strong> — including your 30-day action plan, 90-day roadmap, and financial impact analysis. A quick-action summary will also appear on screen.
+          Enter your email to receive your <strong>full detailed HR report</strong> including your 30-day action plan, 90-day roadmap, and financial impact analysis. A quick-action summary will also appear on screen.
         </p>
         <div style={{display:"flex",flexDirection:"column",gap:10,marginBottom:20}}>
           <div>
@@ -754,7 +754,7 @@ Start with your first diagnostic question. Remember: do NOT ask for their name, 
         <div style={{padding:"24px 28px",background:C.bgDark,borderRadius:16,textAlign:"center",marginBottom:20}}>
           <div style={{fontSize:18,fontWeight:700,color:C.textInverse,letterSpacing:"-0.3px",marginBottom:6}}>Ready to fix what we found?</div>
           <div style={{fontSize:13,color:"rgba(255,255,255,0.5)",marginBottom:16,lineHeight:1.6}}>PeopleScoreAI turns this report into an ongoing HR action plan with expert support at every step.</div>
-          <a href={`mailto:hello@peoplescoreai.com?subject=PeopleScoreAI — I scored ${liveScore} and want to improve`}
+          <a href={`mailto:hello@peoplescoreai.com?subject=PeopleScoreAI I scored ${liveScore} and want to improve`}
             style={{display:"inline-block",padding:"12px 24px",background:C.blue,borderRadius:10,color:C.textInverse,fontSize:14,fontWeight:700,textDecoration:"none"}}>
             Talk to PeopleScoreAI →
           </a>
@@ -840,7 +840,7 @@ function SetupFlow({ ctx, setCtx, onStart, onBack }) {
             <p style={{fontSize:14,color:C.textSub,marginBottom:24,lineHeight:1.6}}>Your audit adapts based on what you're evaluating.</p>
             {[
               {k:"organization",icon:"🏢",t:"Full Organization",d:`Assess ${local.companyName}'s overall HR health across all functions`},
-              {k:"population",icon:"👥",t:"Specific Workforce Population",d:`Assess a specific group within ${local.companyName} — e.g., corporate employees, field/hourly workers, a business unit`},
+              {k:"population",icon:"👥",t:"Specific Workforce Population",d:`Assess a specific group within ${local.companyName} e.g., corporate employees, field/hourly workers, a business unit`},
               {k:"function",icon:"🎯",t:"HR Function Assessment",d:"For HR leaders: assess the maturity of a specific HR function (Talent Acquisition, Total Rewards, L&D, etc.)"},
             ].map(({k,icon,t,d})=>(
               <button key={k} onClick={()=>update("auditMode",k)}
@@ -863,7 +863,7 @@ function SetupFlow({ ctx, setCtx, onStart, onBack }) {
             {local.auditMode==="organization"&&(
               <>
                 <h2 style={{fontSize:24,fontWeight:700,color:C.navy,letterSpacing:"-0.5px",marginBottom:6}}>A few more details</h2>
-                <p style={{fontSize:14,color:C.textSub,marginBottom:20,lineHeight:1.6}}>Optional — helps Claude ask more relevant questions.</p>
+                <p style={{fontSize:14,color:C.textSub,marginBottom:20,lineHeight:1.6}}>Optional helps Claude ask more relevant questions.</p>
                 <Lbl>Business stage</Lbl>
                 <Sel value={local.stage} onChange={v=>update("stage",v)}
                   opts={["Just started (under 2 years)","Growing fast (2–5 years)","Stable & established (5+ years)","Restructuring or pivoting"]}/>
@@ -896,7 +896,7 @@ function SetupFlow({ ctx, setCtx, onStart, onBack }) {
             )}
             <div style={{padding:"14px 16px",background:"#FFF9E6",border:`1px solid ${C.amber}40`,borderRadius:10,marginTop:8}}>
               <div style={{fontSize:13,fontWeight:700,color:C.amber,marginBottom:3}}>💬 How this works</div>
-              <div style={{fontSize:12,color:C.textSub,lineHeight:1.6}}>Your audit is a real conversation. You'll see multiple choice options — but you can also <strong>type anything in your own words</strong>. The more detail you share, the more accurate your report will be.</div>
+              <div style={{fontSize:12,color:C.textSub,lineHeight:1.6}}>Your audit is a real conversation. You'll see multiple choice options but you can also <strong>type anything in your own words</strong>. The more detail you share, the more accurate your report will be.</div>
             </div>
           </div>
         )}
